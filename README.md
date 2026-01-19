@@ -1,73 +1,116 @@
-# Mesa de Ayuda (Laravel 10 + AdminPro)
+# Mesa de Ayuda - Laravel 10 + AdminPro
 
-Este proyecto es una plataforma de Helpdesk desarrollada como prueba práctica. Implementa un sistema completo de gestión de tickets utilizando Laravel 10 como base, integrado con la plantilla visual AdminPro para una interfaz profesional, y potenciado por MySQL para la base de datos.
+![Laravel](https://img.shields.io/badge/Laravel-10-red?logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.1-blue?logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8-blue?logo=mysql&logoColor=white)
+![AdminPro](https://img.shields.io/badge/AdminPro-Template-purple)
 
-## Funcionalidades Principales
+---
 
-El sistema cubre todos los módulos requeridos para un flujo de trabajo de soporte técnico real:
+## Descripción
 
-1.  **Gestión de Tickets (CRUD)**: Permite crear, ver, editar y listar tickets. El listado incluye filtros por estado y un buscador de texto completo, todo funcional sin recargar la página gracias a Livewire.
-2.  **Sistema de Comentarios**: Los usuarios pueden interactuar en los tickets. Si se agrega un comentario a un ticket "Abierto", este cambia automáticamente su estado a "En Proceso" para reflejar actividad.
-3.  **Dashboard de Métricas**: Visualización clara del estado del soporte con contadores de tickets (Abiertos, Cerrados, Alta Prioridad) y una tabla resumen de los últimos ingresos.
-4.  **Reglas de Negocio Robustas**:
-    *   Control de permisos: Solo el creador del ticket o un administrador pueden editarlo.
-    *   Validación de cierre: El sistema impide cerrar un ticket si este no tiene comentarios previos.
-5.  **Experiencia de Usuario (UX)**:
-    *   Notificaciones tipo "Toast" para feedback instantáneo (éxito/error).
-    *   Modo Oscuro integrado y persistente.
-    *   Interfaz responsiva y moderna.
+Mesa de Ayuda es una mini plataforma desarrollada con **Laravel 10**, **MySQL** y el template **AdminPro**. Permite gestionar tickets de soporte con comentarios, seguimiento de estados y un dashboard que resume la actividad.
 
-## Requisitos de Instalación
+Cuenta con dos tipos de usuarios: **administrador** y **usuario normal**, cada uno con permisos específicos.
 
-Para ejecutar este proyecto en local, asegúrese de tener instalado:
-*   PHP 8.1 o superior
-*   Composer
-*   Node.js y NPM
-*   MySQL
+---
 
-## Instrucciones de Despliegue
+## Funcionalidades
 
-Siga estos pasos en su terminal para levantar el entorno:
+### Tickets
+![Tickets](https://img.shields.io/badge/Tickets-CRUD-green)
+- Crear, ver, editar y cerrar tickets según permisos.  
+- Filtros por estado y búsqueda por título o descripción.  
+- Cambio automático de estado a `en_proceso` al agregar un comentario.  
+- Acciones rápidas desde el listado para cambiar estado.  
+- Listado paginado con badges de prioridad y estado.  
 
-1.  Instalar las dependencias de PHP:
-    composer install
+### Comentarios
+![Comentarios](https://img.shields.io/badge/Comentarios-Livewire-blue)
+- Agregar y visualizar comentarios en tickets.  
+- Solo se puede cerrar un ticket si tiene al menos un comentario.  
+- Compatible con Livewire: agregar comentarios sin recargar la página.  
 
-2.  Generar el archivo de configuración de entorno:
-    cp .env.example .env
+### Dashboard
+![Dashboard](https://img.shields.io/badge/Dashboard-Métricas-orange)
+- Contadores de tickets: abiertos, en proceso, cerrados, alta prioridad abiertos/en proceso.  
+- Últimos 10 tickets creados.  
 
-3.  Generar la clave de aplicación:
-    php artisan key:generate
+---
 
-4.  Configurar la conexión a base de datos en el archivo .env:
-    DB_DATABASE=mesa_ayuda
-    DB_USERNAME=root
-    DB_PASSWORD=
+## Reglas de negocio
+![Seguridad](https://img.shields.io/badge/Seguridad-Roles-red)
+- Solo el creador o un administrador puede editar un ticket.  
+- No se puede cerrar un ticket sin comentarios.  
+- Validaciones estrictas de campos obligatorios: título, descripción, prioridad y estado.  
 
-5.  Ejecutar las migraciones y cargar los datos de prueba (Seeders):
-    php artisan migrate:fresh --seed
+---
 
-6.  Compilar los recursos de frontend:
-    npm install
-    npm run build
+## Usuarios demo
 
-7.  Iniciar el servidor de desarrollo:
-    php artisan serve
+| Rol             | Email             | Password |
+|-----------------|-----------------|----------|
+| Administrador   | admin@ejemplo.com | admin123 |
+| Usuario normal  | user@user.com     | user123 |
 
-## Credenciales de Acceso
+> Los usuarios se crean automáticamente desde los seeders incluidos.
 
-El sistema viene precargado con dos usuarios para probar los diferentes roles:
+---
 
-**Rol Administrador**
-Email: admin@admin.com
-Contraseña: password
+## Requisitos
 
-**Rol Usuario Normal**
-Email: user@user.com
-Contraseña: password
+![Requisitos](https://img.shields.io/badge/Requisitos-PHP_8.1-blue)
+- PHP >= 8.1  
+- MySQL  
+- Composer  
+- Node.js y npm (solo si se desea compilar assets, aunque AdminPro funciona nativo)
 
-## Estructura del Proyecto
+---
 
-*   **Modelos**: User, Ticket, TicketComment.
-*   **Vistas**: Utiliza Blade con componentes Bootstrap 5 personalizados (AdminPro).
-*   **Livewire**: Componentes para Dashboard, Listado de Tickets y Detalle/Comentarios, todoo en tiempo real.
-*   **Tests**: Feature tests incluidos para validar la creación de tickets.
+## Instalación
+
+1. Clonar el repositorio:
+
+```bash
+git clone https://github.com/ianclerr/Prueba-Tecnica---Mesa-de-Ayuda.git
+cd Prueba-Tecnica---Mesa-de-Ayuda
+Instalar dependencias:
+
+composer install
+Configurar .env con los datos de la base de datos:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mesa_ayuda
+DB_USERNAME=root
+DB_PASSWORD=
+Crear la base de datos en MySQL:
+
+CREATE DATABASE mesa_ayuda;
+Ejecutar migraciones y seeders:
+
+php artisan migrate:fresh --seed
+Iniciar el servidor:
+
+php artisan serve
+El proyecto estará disponible en http://127.0.0.1:8000.
+
+Uso
+Ingresar con los usuarios demo para probar todas las funcionalidades.
+
+Los administradores tienen control total sobre todos los tickets.
+
+Los usuarios normales solo pueden gestionar sus propios tickets.
+
+El dashboard refleja los contadores y últimos tickets según el rol.
+
+Extras implementados
+
+
+
+Livewire para filtros y comentarios sin recargar página.
+
+Logs de acciones del usuario para auditoría.
+
+Modo oscuro y notificaciones tipo toast.
