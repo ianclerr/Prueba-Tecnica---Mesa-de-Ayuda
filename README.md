@@ -50,8 +50,8 @@ Cuenta con dos tipos de usuarios: **administrador** y **usuario normal**, cada u
 
 | Rol             | Email             | Password |
 |-----------------|-----------------|----------|
-| Administrador   | admin@ejemplo.com | admin123 |
-| Usuario normal  | user@user.com     | user123 |
+| Administrador   | admin@ejemplo.com | password |
+| Usuario normal  | user@user.com     | password |
 
 > Los usuarios se crean automáticamente desde los seeders incluidos.
 
