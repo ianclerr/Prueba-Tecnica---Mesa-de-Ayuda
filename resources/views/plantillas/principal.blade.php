@@ -232,7 +232,7 @@
             {{ $slot }}
             
             <footer class="footer text-center text-muted mt-5">
-                © 2026 Mesa de Ayuda - AdminPro Lite Theme
+                © 2026 Mesa de Ayuda - Ian Cler
             </footer>
         </div>
     </div>

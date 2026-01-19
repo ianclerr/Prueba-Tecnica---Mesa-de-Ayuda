@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="text-center mb-4">
-                    <h3 class="box-title m-b-0">AdminPro</h3>
+                    <h3 class="box-title m-b-0">Mesa de Ayuda</h3>
                     <small>Ingrese sus credenciales</small>
                 </div>
                 {{ $slot }}

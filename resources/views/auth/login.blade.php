@@ -18,25 +18,10 @@
             <input id="password" type="password" name="password" required autocomplete="current-password" class="form-control" placeholder="Password">
             <x-input-error :messages="$errors->get('password')" class="text-danger small mt-1" />
         </div>
-
-        <!-- Remember Me -->
-        <div class="form-check mb-3">
-            <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
-            <label for="remember_me" class="form-check-label text-muted small">Recordarme</label>
-        </div>
-
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-info text-white btn-lg btn-block text-uppercase waves-effect waves-light">
-                Log In
+                Iniciar Sesión
             </button>
-        </div>
-        
-        <div class="text-center mt-3">
-            @if (Route::has('password.request'))
-                <a class="small text-muted" href="{{ route('password.request') }}">
-                    ¿Olvidaste tu contraseña?
-                </a>
-            @endif
         </div>
     </form>
 </x-guest-layout>
