@@ -9,20 +9,17 @@ use App\Models\TicketComment;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // 1. Admin
+        // 1. Usuario Administrador
         $admin = User::factory()->create([
             'name' => 'Administrador',
-            'email' => 'admin@ejemplo.com', // Checklist requirement
+            'email' => 'admin@admin.com',
             'password' => bcrypt('password'),
             'is_admin' => true,
         ]);
 
-        // 2. User Normal
+        // 2. Usuario Normal
         $user = User::factory()->create([
             'name' => 'Ian Cler Renaud',
             'email' => 'user@user.com',
@@ -30,7 +27,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
         ]);
 
-        // 3. Realistic Tickets
+        // 3. Tickets
         $issues = [
             ['titulo' => 'Computadora no enciende', 'prioridad' => 'alta', 'descripcion' => 'Al presionar el botón de encendido no hace nada, ni luces ni ventilador.'],
             ['titulo' => 'Impresora no funciona', 'prioridad' => 'media', 'descripcion' => 'La impresora de contabilidad está atascada y parpadea una luz roja.'],
@@ -53,7 +50,6 @@ class DatabaseSeeder extends Seeder
                 'created_by' => $user->id,
             ]);
 
-            // Random comments removed as per request
         }
     }
 }

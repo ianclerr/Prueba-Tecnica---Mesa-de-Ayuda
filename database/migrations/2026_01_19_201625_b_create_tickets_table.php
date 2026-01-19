@@ -16,7 +16,7 @@ return new class extends Migration
         $table->text('descripcion');
         $table->enum('prioridad', ['baja', 'media', 'alta'])->default('baja');
         $table->enum('estado', ['abierto', 'en_proceso', 'cerrado'])->default('abierto');
-        $table->foreignId('created_by')->constrained('users'); // Aquí busca a users
+        $table->foreignId('created_by')->constrained('users');
         $table->timestamps();
     });
 }
